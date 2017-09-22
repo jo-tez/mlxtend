@@ -96,7 +96,7 @@ class Kmeans(_BaseModel, _Cluster, _IterativeModel):
 
             if np.allclose(self.centroids_, new_centroids,
                            rtol=self.convergence_tolerance,
-                           atol=1e-08, equal_nan=False):
+                           atol=1e-08):
                 break
             else:
                 self.centroids_ = new_centroids

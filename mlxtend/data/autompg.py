@@ -8,6 +8,7 @@
 
 import numpy as np
 import os
+from matplotlib import mlab
 
 this_dir, this_filename = os.path.split(__file__)
 DATA_PATH = os.path.join(this_dir, "data", "autompg.csv.gz")
@@ -40,6 +41,7 @@ def autompg_data():
         y is a 1-dimensional array of the target MPG values.
 
     """
-    tmp = np.genfromtxt(fname=DATA_PATH, delimiter=',')
-    X, y = tmp[:, :-1], tmp[:, -1]
+    # tmp = np.loadtxt(fname=DATA_PATH, delimiter=',')
+    # X, y = tmp[:, :-1], tmp[:, -1]
+    X = np.loadtxt(fname=DATA_PATH, delimiter=',', dtype=None, usecols=range(7))
     return X, y

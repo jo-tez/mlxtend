@@ -37,7 +37,7 @@ def iris_data():
         y is a 1-dimensional array of the class labels {0, 1, 2}
 
     """
-    tmp = np.genfromtxt(fname=DATA_PATH, delimiter=',')
+    tmp = np.loadtxt(fname=DATA_PATH, delimiter=',')
     X, y = tmp[:, :-1], tmp[:, -1]
     y = y.astype(int)
     return X, y

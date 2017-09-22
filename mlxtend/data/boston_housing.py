@@ -48,7 +48,7 @@ def boston_housing_data():
         y is a 1-dimensional array of the continuous target variable MEDV
 
     """
-    tmp = np.genfromtxt(fname=DATA_PATH, delimiter=',', dtype=float)
+    tmp = np.loadtxt(fname=DATA_PATH, delimiter=',', dtype=float)
     print(tmp.shape)
     X, y = tmp[:, :-1], tmp[:, -1]
     return X, y

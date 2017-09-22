@@ -27,7 +27,7 @@ def mnist_data():
         y contains the 10 unique class labels 0-9.
 
     """
-    tmp = np.genfromtxt(fname=DATA_PATH, delimiter=',')
+    tmp = np.loadtxt(fname=DATA_PATH, delimiter=',')
     X, y = tmp[:, :-1], tmp[:, -1]
     y = y.astype(int)
     return X, y
