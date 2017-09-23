@@ -8,10 +8,12 @@
 
 import numpy as np
 import os
-from matplotlib import mlab
 
 this_dir, this_filename = os.path.split(__file__)
-DATA_PATH = os.path.join(this_dir, "data", "autompg.csv.gz")
+# DATA_PATH = os.path.join(this_dir, "data", "autompg.csv.gz")
+DATA_PATH = os.path.join(this_dir, "data", "auto-mpg.data")
+
+names = ['mpg', 'cylinders', 'displacement', 'horsepower', 'weight', 'acceleration', 'model_year', 'origin', 'car_name']
 
 
 def autompg_data():
@@ -43,5 +45,8 @@ def autompg_data():
     """
     # tmp = np.loadtxt(fname=DATA_PATH, delimiter=',')
     # X, y = tmp[:, :-1], tmp[:, -1]
-    X = np.loadtxt(fname=DATA_PATH, delimiter=',', dtype=None, usecols=range(7))
+    tmp = np.genfromtxt(fname=DATA_PATH, dtype=None, usecols=range(9), missing_values='?', filling_values=None, names=names)
+    X = tmp[names[1:9]]
+    y = tmp[names[0]]
+    
     return X, y
