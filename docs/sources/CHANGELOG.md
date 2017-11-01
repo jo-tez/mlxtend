@@ -12,17 +12,16 @@ The CHANGELOG for the current development version is available at
 - [Source code (zip)](https://github.com/rasbt/mlxtend/archive/v0.9.1.zip)
 - [Source code (tar.gz)](https://github.com/rasbt/mlxtend/archive/v0.9.1.tar.gz)
 
-##### Downloads
-
--
-
 ##### New Features
 
--
+- New `max_len` parameter for the frequent itemset generation via the `apriori` function to allow for early stopping. ([#270](https://github.com/rasbt/mlxtend/pull/270))
 
 ##### Changes
 
--
+- All feature index tuples in `SequentialFeatureSelector` or now in sorted order [#262](https://github.com/rasbt/mlxtend/pull/262)
+- The `SequentialFeatureSelector` now runs the continuation of the floating inclusion/exclusion as described in Novovicova & Kittler (1994). 
+Note that this didn't cause any difference in performance on any of the test scenarios but could lead to better performance in certain edge cases. 
+[#262](https://github.com/rasbt/mlxtend/pull/262)
 
 
 ### Version 0.9.0 (2017-10-21)
