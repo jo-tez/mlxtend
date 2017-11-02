@@ -9,12 +9,12 @@
 import numpy as np
 from itertools import combinations
 from math import factorial
-from nose.tools import nottest
+#from nose.tools import nottest
 
 
 # decorator to prevent nose to consider
 # this as a unit test due to "test" in the name
-@nottest
+#@nottest
 def permutation_test(x, y, func='x_mean != y_mean', method='exact',
                      num_rounds=1000, seed=None):
     """

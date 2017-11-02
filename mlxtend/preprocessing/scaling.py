@@ -6,7 +6,7 @@
 #
 # License: BSD 3 clause
 
-import pandas as pd
+#import pandas as pd
 import numpy as np
 
 
@@ -34,9 +34,10 @@ def minmax_scaling(array, columns, min_val=0, max_val=1):
     if len(ary_new.shape) == 1:
         ary_new = ary_new[:, np.newaxis]
 
-    if isinstance(ary_new, pd.DataFrame):
-        ary_newt = ary_new.loc
-    elif isinstance(ary_new, np.ndarray):
+#    if isinstance(ary_new, pd.DataFrame):
+#        ary_newt = ary_new.loc
+#    elif isinstance(ary_new, np.ndarray):
+    if isinstance(ary_new, np.ndarray):
         ary_newt = ary_new
     else:
         raise AttributeError('Input array must be a pandas'
@@ -96,11 +97,12 @@ def standardize(array, columns=None, ddof=0, return_params=False, params=None):
     if len(dim) == 1:
         ary_new = ary_new[:, np.newaxis]
 
-    if isinstance(ary_new, pd.DataFrame):
-        ary_newt = ary_new.loc
-        if columns is None:
-            columns = ary_new.columns
-    elif isinstance(ary_new, np.ndarray):
+#    if isinstance(ary_new, pd.DataFrame):
+#        ary_newt = ary_new.loc
+#        if columns is None:
+#            columns = ary_new.columns
+#    elif isinstance(ary_new, np.ndarray):
+    if isinstance(ary_new, np.ndarray):
         ary_newt = ary_new
         if columns is None:
             columns = list(range(ary_new.shape[1]))
