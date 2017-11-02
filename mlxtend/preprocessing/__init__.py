@@ -8,12 +8,17 @@ from .mean_centering import MeanCenterer
 from .shuffle import shuffle_arrays_unison
 from .scaling import minmax_scaling
 from .scaling import standardize
-from .dense_transformer import DenseTransformer
-from .copy_transformer import CopyTransformer
-from .onehot import one_hot
-from .onehot import OnehotTransactions
+#from .dense_transformer import DenseTransformer
+#from .copy_transformer import CopyTransformer
+#from .onehot import one_hot
+#from .onehot import OnehotTransactions
 
 
-__all__ = ["MeanCenterer", "shuffle_arrays_unison", "CopyTransformer",
-           "minmax_scaling", "standardize", "DenseTransformer",
-           "one_hot", "OnehotTransactions"]
+__all__ = ["MeanCenterer", 
+           "shuffle_arrays_unison",
+           "minmax_scaling", "standardize", 
+#           "CopyTransformer"
+#           "DenseTransformer",
+#           "one_hot", 
+#           "OnehotTransactions"
+]

@@ -8,7 +8,7 @@
 
 import numpy as np
 from time import time
-from scipy.special import expit
+#from scipy.special import expit
 from .._base import _BaseModel
 from .._base import _IterativeModel
 from .._base import _MultiClass
@@ -273,5 +273,6 @@ class MultiLayerPerceptron(_BaseModel, _IterativeModel,
         Uses scipy.special.expit to avoid overflow
         error for very small input values z.
         """
-        # return 1.0 / (1.0 + np.exp(-z))
-        return expit(z)
+        return 1.0 / (1.0 + np.exp(-z))
+        # return expit(z)
+        # return 1. / (1. + np.exp(-np.clip(z, -250, 250)))

@@ -7,13 +7,16 @@
 from .scoring import scoring
 from .confusion_matrix import confusion_matrix
 from .lift_score import lift_score
-from .mcnemar import mcnemar_table
-from .mcnemar import mcnemar
+#from .mcnemar import mcnemar_table
+#from .mcnemar import mcnemar
 from .bootstrap import bootstrap
 from .bootstrap_outofbag import BootstrapOutOfBag
 from .permutation import permutation_test
 
 
 __all__ = ["scoring", "confusion_matrix",
-           "mcnemar_table", "mcnemar", "lift_score",
-           "bootstrap", "permutation_test", "BootstrapOutOfBag"]
+#           "mcnemar_table", "mcnemar", 
+            "lift_score",
+           "bootstrap", "permutation_test",
+           "BootstrapOutOfBag"]
+
