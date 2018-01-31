@@ -20,7 +20,7 @@
 
 <br>
 
-Sebastian Raschka 2014-2017
+Sebastian Raschka 2014-2018
 
 <br>
 
@@ -116,7 +116,7 @@ for clf, lab, grd in zip([clf1, clf2, clf3, eclf],
 plt.show()
 ```
 
-![](./docs/sources/img/ensemble_decision_regions_2d.png)
+![](./docs/sources/img/ensemble_decision_regions_2d.jpg)
 
 ---
 

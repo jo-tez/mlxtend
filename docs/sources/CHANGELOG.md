@@ -7,6 +7,61 @@ The CHANGELOG for the current development version is available at
 
 ---
 
+### Version 0.11.0dev
+
+##### Downloads
+
+- [Source code (zip)](https://github.com/rasbt/mlxtend/archive/v0.10.1.zip)
+- [Source code (tar.gz)](https://github.com/rasbt/mlxtend/archive/v0.10.1.tar.gz)
+
+##### New Features
+
+-   New function implementing the resampled paired t-test procedure (`paired_ttest_resampled`)
+    to compare the performance of two models
+    (also called k-hold-out paired t-test). ([#323](https://github.com/rasbt/mlxtend/issues/323))
+-   New function implementing the k-fold paired t-test procedure (`paired_ttest_kfold_cv`)
+    to compare the performance of two models
+    (also called k-hold-out paired t-test). ([#324](https://github.com/rasbt/mlxtend/issues/324))
+-   New function implementing the 5x2cv paired t-test procedure (`paired_ttest_5x2cv`) proposed by Dieterrich (1998)
+    to compare the performance of two models. ([#325](https://github.com/rasbt/mlxtend/issues/325))
+
+##### Changes
+
+
+- Raises an informative error message if `predict` or `predict_meta_features` is called prior to calling the `fit` method in `StackingRegressor` and `StackingCVRegressor`. ([#315](https://github.com/rasbt/mlxtend/issues/315))
+- The `plot_decision_regions` function now automatically determines the optimal setting based on the feature dimensions and supports anti-aliasing. The old `res`  parameter has been deprecated. ([#309](https://github.com/rasbt/mlxtend/pull/309) by [Guillaume Poirier-Morency](https://github.com/arteymix))
+
+##### Bug Fixes
+
+- Fixed issue when class labels were provided to the `EnsembleVoteClassifier` when `refit` was set to `false`. ([#322](https://github.com/rasbt/mlxtend/issues/322))
+
+
+
+### Version 0.10.0 (2017-12-22)
+
+##### Downloads
+
+- [Source code (zip)](https://github.com/rasbt/mlxtend/archive/v0.10.0.zip)
+- [Source code (tar.gz)](https://github.com/rasbt/mlxtend/archive/v0.10.0.tar.gz)
+
+##### New Features
+
+- New `store_train_meta_features` parameter for `fit` in StackingCVRegressor. if True, train meta-features are stored in `self.train_meta_features_`.
+    New `pred_meta_features` method for `StackingCVRegressor`. People can get test meta-features using this method. ([#294](https://github.com/rasbt/mlxtend/pull/294) via [takashioya](https://github.com/takashioya))
+- The new `store_train_meta_features` attribute and `pred_meta_features` method for the `StackingCVRegressor` were also added to the `StackingRegressor`, `StackingClassifier`, and `StackingCVClassifier` ([#299](https://github.com/rasbt/mlxtend/pull/299) & [#300](https://github.com/rasbt/mlxtend/pull/300)) 
+- New function (`evaluate.mcnemar_tables`) for creating multiple 2x2 contigency from model predictions arrays that can be used in multiple McNemar (post-hoc) tests or Cochran's Q or F tests, etc. ([#307](https://github.com/rasbt/mlxtend/issues/307))
+- New function (`evaluate.cochrans_q`) for performing Cochran's Q test to compare the accuracy of multiple classifiers. ([#310](https://github.com/rasbt/mlxtend/issues/310))
+
+##### Changes
+
+- Added `requirements.txt` to `setup.py`. ([#304](https://github.com/rasbt/mlxtend/issues/304) via [Colin Carrol](https://github.com/ColCarroll))
+
+
+##### Bug Fixes
+
+- Improved numerical stability for p-values computed via the the exact McNemar test ([#306](https://github.com/rasbt/mlxtend/issues/306))
+- `nose` is not required to use the library ([#302](https://github.com/rasbt/mlxtend/issues/302))
+
 ### Version 0.9.1 (2017-11-19)
 
 ##### Downloads

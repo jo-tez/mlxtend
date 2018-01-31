@@ -1,6 +1,6 @@
 # Soft Voting/Majority Rule classifier
 
-# Sebastian Raschka 2014-2017
+# Sebastian Raschka 2014-2018
 # mlxtend Machine Learning Library Extensions
 #
 # Implementation of an meta-classification algorithm for majority voting.
@@ -260,7 +260,12 @@ class EnsembleVoteClassifier(BaseEstimator, ClassifierMixin, TransformerMixin):
 
     def _predict(self, X):
         """Collect results from clf.predict calls."""
-        return np.asarray([clf.predict(X) for clf in self.clfs_]).T
+
+        if self.refit:
+            return np.asarray([clf.predict(X) for clf in self.clfs_]).T
+        else:
+            return np.asarray([self.le_.transform(clf.predict(X))
+                               for clf in self.clfs_]).T
 
     def _predict_probas(self, X):
         """Collect results from clf.predict_proba calls."""

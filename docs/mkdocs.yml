@@ -24,7 +24,7 @@ extra_javascript:
   - https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML
   - mathjaxhelper.js
 
-copyright: Copyright &copy; 2014-2017 <a href="http://sebastianraschka.com">Sebastian Raschka</a>
+copyright: Copyright &copy; 2014-2018 <a href="http://sebastianraschka.com">Sebastian Raschka</a>
 google_analytics: ['UA-38457794-2', 'rasbt.github.io/mlxtend/']
 
 pages:
@@ -55,10 +55,15 @@ pages:
     - user_guide/evaluate/bootstrap.md
     - user_guide/evaluate/bootstrap_point632_score.md
     - user_guide/evaluate/BootstrapOutOfBag.md
+    - user_guide/evaluate/cochrans_q.md    
     - user_guide/evaluate/confusion_matrix.md
     - user_guide/evaluate/lift_score.md
     - user_guide/evaluate/mcnemar_table.md
+    - user_guide/evaluate/mcnemar_tables.md
     - user_guide/evaluate/mcnemar.md
+    - user_guide/evaluate/paired_ttest_5x2cv.md
+    - user_guide/evaluate/paired_ttest_kfold_cv.md
+    - user_guide/evaluate/paired_ttest_resampled.md
     - user_guide/evaluate/permutation_test.md
     - user_guide/evaluate/scoring.md
   - feature_extraction:

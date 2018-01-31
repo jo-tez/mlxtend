@@ -1,18 +1,20 @@
 # Out-of-fold stacking regressor tests
 #
-# Sebastian Raschka 2014-2017
+# Sebastian Raschka 2014-2018
 #
 # mlxtend Machine Learning Library Extensions
 # Author: Eike Dehling <e.e.dehling@gmail.com>
 #
 # License: BSD 3 clause
 
+import numpy as np
 from mlxtend.regressor import StackingCVRegressor
 from sklearn.linear_model import LinearRegression
 from sklearn.linear_model import Ridge
 from sklearn.svm import SVR
-import numpy as np
-from sklearn.model_selection import GridSearchCV
+from sklearn.exceptions import NotFittedError
+from sklearn.model_selection import GridSearchCV, train_test_split
+from mlxtend.utils import assert_raises
 
 
 # Some test data
@@ -120,6 +122,7 @@ def test_get_params():
               'regressors',
               'ridge',
               'shuffle',
+              'store_train_meta_features',
               'use_features_in_secondary']
     assert got == expect, got
 
@@ -140,3 +143,64 @@ def test_regressor_gridsearch():
     grid.fit(X1, y)
 
     assert len(grid.best_params_['regressors']) == 3
+
+
+def test_predict_meta_features():
+    lr = LinearRegression()
+    svr_rbf = SVR(kernel='rbf')
+    ridge = Ridge(random_state=1)
+    stregr = StackingCVRegressor(regressors=[lr, ridge],
+                                 meta_regressor=svr_rbf)
+    X_train, X_test, y_train, y_test = train_test_split(X2, y, test_size=0.3)
+    stregr.fit(X_train, y_train)
+    test_meta_features = stregr.predict(X_test)
+    assert test_meta_features.shape[0] == X_test.shape[0]
+
+
+def test_train_meta_features_():
+    lr = LinearRegression()
+    svr_rbf = SVR(kernel='rbf')
+    ridge = Ridge(random_state=1)
+    stregr = StackingCVRegressor(regressors=[lr, ridge],
+                                 meta_regressor=svr_rbf,
+                                 store_train_meta_features=True)
+    X_train, X_test, y_train, y_test = train_test_split(X2, y, test_size=0.3)
+    stregr.fit(X_train, y_train)
+    train_meta_features = stregr.train_meta_features_
+    assert train_meta_features.shape[0] == X_train.shape[0]
+
+
+def test_not_fitted_predict():
+    lr = LinearRegression()
+    svr_rbf = SVR(kernel='rbf')
+    ridge = Ridge(random_state=1)
+    stregr = StackingCVRegressor(regressors=[lr, ridge],
+                                 meta_regressor=svr_rbf,
+                                 store_train_meta_features=True)
+    X_train, X_test, y_train, y_test = train_test_split(X2, y, test_size=0.3)
+
+    expect = ("Estimator not fitted, "
+              "call `fit` before exploiting the model.")
+
+    assert_raises(NotFittedError,
+                  expect,
+                  stregr.predict,
+                  X_train)
+
+
+def test_not_fitted_predict_meta_features():
+    lr = LinearRegression()
+    svr_rbf = SVR(kernel='rbf')
+    ridge = Ridge(random_state=1)
+    stregr = StackingCVRegressor(regressors=[lr, ridge],
+                                 meta_regressor=svr_rbf,
+                                 store_train_meta_features=True)
+    X_train, X_test, y_train, y_test = train_test_split(X2, y, test_size=0.3)
+
+    expect = ("Estimator not fitted, "
+              "call `fit` before exploiting the model.")
+
+    assert_raises(NotFittedError,
+                  expect,
+                  stregr.predict_meta_features,
+                  X_train)
