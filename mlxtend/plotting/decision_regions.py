@@ -216,6 +216,7 @@ def plot_decision_regions(X, y, clf,
             for feature_idx in filler_feature_values:
                 X_predict[:, feature_idx] = filler_feature_values[feature_idx]
     Z = clf.predict(X_predict.astype(X.dtype))
+    Z = np.array(Z)
     Z = Z.reshape(xx.shape)
     # Plot decisoin region
     # Make sure contourf_kwargs has backwards compatible defaults

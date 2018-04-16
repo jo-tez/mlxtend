@@ -11,12 +11,12 @@ from .lift_score import lift_score
 #from .mcnemar import mcnemar
 from .bootstrap import bootstrap
 from .bootstrap_outofbag import BootstrapOutOfBag
-from .bootstrap_point632 import bootstrap_point632_score
+#from .bootstrap_point632 import bootstrap_point632_score
 from .permutation import permutation_test
-from .cochrans_q import cochrans_q
-from .ttest import paired_ttest_resampled
-from .ttest import paired_ttest_kfold_cv
-from .ttest import paired_ttest_5x2cv
+#from .cochrans_q import cochrans_q
+#from .ttest import paired_ttest_resampled
+#from .ttest import paired_ttest_kfold_cv
+#from .ttest import paired_ttest_5x2cv
 
 
 __all__ = ["scoring", "confusion_matrix",
