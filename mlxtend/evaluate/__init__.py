@@ -4,8 +4,13 @@
 #
 # License: BSD 3 clause
 
-from .scoring import scoring
+
+from .bootstrap import bootstrap
+from .bootstrap_outofbag import BootstrapOutOfBag
+from .bootstrap_point632 import bootstrap_point632_score
+from .cochrans_q import cochrans_q
 from .confusion_matrix import confusion_matrix
+from .feature_importance import feature_importance_permutation
 from .lift_score import lift_score
 #from .mcnemar import mcnemar_table
 #from .mcnemar import mcnemar
@@ -25,4 +30,5 @@ __all__ = ["scoring", "confusion_matrix",
            "bootstrap", "permutation_test",
            "BootstrapOutOfBag", "bootstrap_point632_score",
            "cochrans_q", "paired_ttest_resampled",
-           "paired_ttest_kfold_cv", "paired_ttest_5x2cv"]
+           "paired_ttest_kfold_cv", "paired_ttest_5x2cv",
+           "feature_importance_permutation"]

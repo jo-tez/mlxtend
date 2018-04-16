@@ -17,8 +17,10 @@ The CHANGELOG for the current development version is available at
 
 ##### New Features
 
-
-The fit method of the SequentialFeatureSelector now optionally accepts **fit_params for the estimator that is used for the feature selection. ([#350](https://github.com/rasbt/mlxtend/pull/350) by Zach Griffith)
+-  A new `feature_importance_permuation` function to compute the feature importance in classifiers and regressors via the *permutation importance* method ([#358](https://github.com/rasbt/mlxtend/pull/358))
+-  The fit method of the ExhaustiveFeatureSelector now optionally accepts **fit_params for the estimator that is used for the feature selection. ([#354](https://github.com/rasbt/mlxtend/pull/354) by Zach Griffith)
+-  The fit method of the SequentialFeatureSelector now optionally accepts
+**fit_params for the estimator that is used for the feature selection. ([#350](https://github.com/rasbt/mlxtend/pull/350) by Zach Griffith)
 
 
 - -
@@ -27,11 +29,13 @@ The fit method of the SequentialFeatureSelector now optionally accepts **fit_par
 
 
 - Replaces `plot_decision_regions` colors by a colorblind-friendly palette and adds contour lines for decision regions. ([#348](https://github.com/rasbt/mlxtend/issues/348))
+- All stacking estimators now raise `NonFittedErrors` if any method for inference is called prior to fitting the estimator. ([#353](https://github.com/rasbt/mlxtend/issues/353))
 
 
 ##### Bug Fixes
 
-- -
+
+
 
 
 ### Version 0.11.0 (2018-03-14)
