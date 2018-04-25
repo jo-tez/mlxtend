@@ -7,7 +7,7 @@
 
 from .bootstrap import bootstrap
 from .bootstrap_outofbag import BootstrapOutOfBag
-from .bootstrap_point632 import bootstrap_point632_score
+#from .bootstrap_point632 import bootstrap_point632_score
 from .cochrans_q import cochrans_q
 from .confusion_matrix import confusion_matrix
 from .feature_importance import feature_importance_permutation
