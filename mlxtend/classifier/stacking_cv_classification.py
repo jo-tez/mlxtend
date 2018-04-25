@@ -86,13 +86,17 @@ class StackingCVClassifier(BaseEstimator, ClassifierMixin, TransformerMixin):
         for fitting the meta-classifier stored in the
         `self.train_meta_features_` array, which can be
         accessed after calling `fit`.
-    refit : bool (default: True)
+    use_clones : bool (default: True)
         Clones the classifiers for stacking classification if True (default)
         or else uses the original ones, which will be refitted on the dataset
-        upon calling the `fit` method. Setting refit=False is
+        upon calling the `fit` method. Hence, if use_clones=True, the original
+        input classifiers will remain unmodified upon using the
+        StackingCVClassifier's `fit` method.
+        Setting `use_clones=False` is
         recommended if you are working with estimators that are supporting
         the scikit-learn fit/predict API interface but are not compatible
         to scikit-learn's `clone` function.
+
 
     Attributes
     ----------
@@ -105,6 +109,11 @@ class StackingCVClassifier(BaseEstimator, ClassifierMixin, TransformerMixin):
         number of samples
         in training data and n_classifiers is the number of classfiers.
 
+    Examples
+    -----------
+    For usage examples, please see
+    http://rasbt.github.io/mlxtend/user_guide/classifier/StackingCVClassifier/
+
     """
     def __init__(self, classifiers, meta_classifier,
                  use_probas=False, cv=2,
@@ -112,7 +121,7 @@ class StackingCVClassifier(BaseEstimator, ClassifierMixin, TransformerMixin):
                  stratify=True,
                  shuffle=True, verbose=0,
                  store_train_meta_features=False,
-                 refit=True):
+                 use_clones=True):
 
         self.classifiers = classifiers
         self.meta_classifier = meta_classifier
@@ -129,7 +138,7 @@ class StackingCVClassifier(BaseEstimator, ClassifierMixin, TransformerMixin):
         self.stratify = stratify
         self.shuffle = shuffle
         self.store_train_meta_features = store_train_meta_features
-        self.refit = refit
+        self.use_clones = use_clones
 
     def fit(self, X, y, groups=None):
         """ Fit ensemble classifers and the meta-classifier.
@@ -152,7 +161,7 @@ class StackingCVClassifier(BaseEstimator, ClassifierMixin, TransformerMixin):
         self : object
 
         """
-        if self.refit:
+        if self.use_clones:
             self.clfs_ = [clone(clf) for clf in self.classifiers]
             self.meta_clf_ = clone(self.meta_classifier)
         else:
@@ -225,7 +234,14 @@ class StackingCVClassifier(BaseEstimator, ClassifierMixin, TransformerMixin):
                                                single_model_prediction])
 
         if self.store_train_meta_features:
-            self.train_meta_features_ = all_model_predictions
+            # Store the meta features in the order of the
+            # original X,y arrays
+            reodered_indices = np.array([]).astype(y.dtype)
+            for train_index, test_index in skf:
+                reodered_indices = np.concatenate((reodered_indices,
+                                                   test_index))
+            self.train_meta_features_ = all_model_predictions[np.argsort(
+                reodered_indices)]
 
         # We have to shuffle the labels in the same order as we generated
         # predictions during CV (we kinda shuffled them when we did

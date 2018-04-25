@@ -7,8 +7,32 @@ The CHANGELOG for the current development version is available at
 
 ---
 
+### Version 0.13.0dev0 (TBD)
 
-### Version 0.12.0dev (TBD)
+##### Downloads
+
+- [Source code (zip)](https://github.com/rasbt/mlxtend/archive/v0.13.0.zip)
+- [Source code (tar.gz)](https://github.com/rasbt/mlxtend/archive/v0.13.0.tar.gz)
+
+##### New Features
+
+-  -
+
+
+##### Changes
+
+
+- -
+
+##### Bug Fixes
+
+- -
+
+
+
+
+
+### Version 0.12.0 (2018-21-04)
 
 ##### Downloads
 
@@ -18,23 +42,24 @@ The CHANGELOG for the current development version is available at
 ##### New Features
 
 -  A new `feature_importance_permuation` function to compute the feature importance in classifiers and regressors via the *permutation importance* method ([#358](https://github.com/rasbt/mlxtend/pull/358))
--  The fit method of the ExhaustiveFeatureSelector now optionally accepts **fit_params for the estimator that is used for the feature selection. ([#354](https://github.com/rasbt/mlxtend/pull/354) by Zach Griffith)
--  The fit method of the SequentialFeatureSelector now optionally accepts
-**fit_params for the estimator that is used for the feature selection. ([#350](https://github.com/rasbt/mlxtend/pull/350) by Zach Griffith)
+-  The fit method of the `ExhaustiveFeatureSelector` now optionally accepts `**fit_params` for the estimator that is used for the feature selection. ([#354](https://github.com/rasbt/mlxtend/pull/354) by Zach Griffith)
+-  The fit method of the `SequentialFeatureSelector` now optionally accepts
+`**fit_params` for the estimator that is used for the feature selection. ([#350](https://github.com/rasbt/mlxtend/pull/350) by Zach Griffith)
 
-
-- -
 
 ##### Changes
 
 
-- Replaces `plot_decision_regions` colors by a colorblind-friendly palette and adds contour lines for decision regions. ([#348](https://github.com/rasbt/mlxtend/issues/348))
+- Replaced `plot_decision_regions` colors by a colorblind-friendly palette and adds contour lines for decision regions. ([#348](https://github.com/rasbt/mlxtend/issues/348))
 - All stacking estimators now raise `NonFittedErrors` if any method for inference is called prior to fitting the estimator. ([#353](https://github.com/rasbt/mlxtend/issues/353))
+- Renamed the `refit` parameter of both the `StackingClassifier` and `StackingCVClassifier` to `use_clones` to be more explicit and less misleading. ([#368](https://github.com/rasbt/mlxtend/pull/368))
 
 
 ##### Bug Fixes
 
-
+- Various changes in the documentation and documentation tools to fix formatting issues ([#363](https://github.com/rasbt/mlxtend/pull/363))
+- Fixes a bug where the `StackingCVClassifier`'s meta features were not stored in the original order when `shuffle=True` ([#370](https://github.com/rasbt/mlxtend/pull/370))
+- Many documentation improvements, including links to the User Guides in the API docs ([#371](https://github.com/rasbt/mlxtend/pull/371))
 
 
 
